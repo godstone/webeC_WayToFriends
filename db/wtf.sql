@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Erstellungszeit: 24. Mai 2016 um 16:18
+-- Erstellungszeit: 24. Mai 2016 um 16:40
 -- Server-Version: 10.1.10-MariaDB
 -- PHP-Version: 7.0.3
 
@@ -65,7 +65,8 @@ ALTER TABLE `person`
 -- Indizes für die Tabelle `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- AUTO_INCREMENT für exportierte Tabellen
