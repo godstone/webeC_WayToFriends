@@ -1,44 +1,26 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: admin
+ * Date: 31.05.16
+ * Time: 15:23
+ */
+
+require_once 'config.php';
+
 session_start();
-include("dbconnect.php"); // Verbindung zur DB
-
-$error = ""; // Variable zum speichern der php-errors
-if(isset($_POST["submit"]))
-{
-    if(empty($_POST["email"]) || empty($_POST["password"]))
-    {
-        $error = "Es werden beide Felder benötigt.";
-    }else
-    {
-// Definiere $email und $password
-        $username=$_POST['email'];
-        $password=$_POST['password'];
-
-// Schutz vor MySQL injection
-        $username = stripslashes($email);
-        $password = stripslashes($password);
-        $username = mysqli_real_escape_string($db, $email);
-        $password = mysqli_real_escape_string($db, $password);
-        $password = md5($password);
-
-// Überprüfe Email und Passwort von DB
-        $sql="SELECT id FROM user WHERE email='$email' and password='$password'";
-        $result=mysqli_query($db,$sql);
-        $row=mysqli_fetch_array($result,MYSQLI_ASSOC);
-
-//Falls diese existieren, eröffne Session
-//Andererseits echo error.
-
-        if(mysqli_num_rows($result) == 1)
-        {
-            $_SESSION['email'] = $login_user; // Initialisiere Session
-            header("location: index.php"); // Redirect zu nächster Seite
-        }else
-        {
-            $error = "Email oder Passwort inkorrekt";
-        }
-
-    }
+$uName = $_POST['name'];
+$pWord = md5($_POST['pwd']);
+$qry = "SELECT user_id, email, oauth FROM user WHERE email='".$uName."' AND password='".$pWord."' AND status='active'";
+$res = mysql_query($qry);
+$num_row = mysql_num_rows($res);
+$row=mysql_fetch_assoc($res);
+if( $num_row == 1 ) {
+    echo 'true';
+    $_SESSION['uName'] = $row['username'];
+    $_SESSION['oId'] = $row['orgid'];
+    $_SESSION['auth'] = $row['oauth'];
 }
-
-?>
+else {
+    echo 'false';
+}

@@ -1,12 +1,3 @@
-<?php
-
-include('login.php'); // Include Login Script
-if ((isset($_SESSION['username']) != ''))
-{
-    header('Location: home.php');
-}
-?>
-
 <!doctype html>
 <html>
 <head>
@@ -16,18 +7,20 @@ if ((isset($_SESSION['username']) != ''))
 </head>
 
 <body>
-<h1>PHP Login Form with Session</h1>
-<div class="loginBox">
-    <h3>Login Form</h3>
-    <br><br>
-    <form method="post" action="">
-        <label>E-Mail:</label><br>
-        <input type="text" name="email" placeholder="email" /><br><br>
-        <label>Password:</label><br>
-        <input type="password" name="password" placeholder="password" />  <br><br>
-        <input type="submit" value="Login" />
+<h1>User Login</h1>
+<div class="err" id="add_err"></div>
+<fieldset>
+    <form action="./" method="post">
+        <ul>
+            <li> <label for="name">E-Mail </label>
+                <input type="text" size="30"  name="name" id="name"  /></li>
+            <li> <label for="word">Password</label>
+                <input type="password" size="30"  name="word" id="word"  /></li>
+            <li> <label></label>
+                <input type="submit" id="login" name="login" value="Login" class="loginbutton" ></li>
+        </ul>
     </form>
-    <div class="error"><?php echo $error;?></div>
+</fieldset>
 </div>
 </body>
 </html>
