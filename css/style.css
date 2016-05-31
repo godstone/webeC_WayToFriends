@@ -16,53 +16,45 @@ ul, li {
 
 /* *********** LOGIN CSS *********** */
 
-#loginform-in {
-    background: none repeat scroll 0 0 #FFFFFF;
-    border: 1px solid #D6E5F5;
-    border-radius: 3px 3px 3px 3px;
-    height: 345px;
-    margin: auto;
-    padding: 0;
-    width: 460px;
+.form-signin {
+    max-width: 500px;
+    padding: 19px 29px 29px;
+    margin: 0 auto;
+//margin-top:90px;
+    background-color: #fff;
+
+    border: 1px solid #e5e5e5;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    box-shadow: 0 1px 2px rgba(0,0,0,.05);
+
+    font-family:Tahoma, Geneva, sans-serif;
+    color:#990000;
+    font-weight:lighter;
 }
 
-#loginform-in fieldset {
-    border-bottom: 1px solid #EFEFEF;
-    margin: 20px auto;
-    padding: 0 0 10px;
-    width: 87%;
+.form-signin .form-signin-heading{
+    color:#00A2D1;
+}
+.form-signin input[type="text"],
+.form-signin input[type="password"],
+.form-signin input[type="email"] {
+    font-size: 16px;
+    height: 45px;
+    padding: 7px 9px;
 }
 
-.loginbutton {
-    background: -moz-linear-gradient(center top , #F1F1F1, #E0E0E0) repeat scroll 0 0 transparent;
-    border: 1px solid #A7A7A7;
-    border-radius: 3px 3px 3px 3px;
-    color: #444444;
-    cursor: pointer;
-    font-family: "Helvetica Neue", SansSerif;
-    font-size: 13px;
-    font-weight: normal;
-    height: 29px;
-    letter-spacing: 1px;
-    width: 92px;
-    margin: 150px 0 0 -20px;
+.signin-form, .body-container
+{
+//border:solid red 1px;
+    margin-top:110px;
 }
-
-#loginform-in fieldset label {
-    color: #7D7D7D;
-    float: left;
-    font-family: "Helvetica Neue", SansSerif;
-    font-size: 14px;
-    font-weight: bold;
-    padding: 8px 0 0;
-    width: 140px;
+.navbar-brand{
+    font-family:"Lucida Handwriting";
 }
-
-#loginform-in fieldset input[type="text"], input[type="password"], fieldset select {
-    border: 1px solid #CBC7C5;
-    border-radius: 3px 3px 3px 3px;
-    float: left;
-    height: 33px;
-    padding: 1px 1px 1px 3px;
-    width: 85%;
+#btn-submit{
+    height:45px;
 }

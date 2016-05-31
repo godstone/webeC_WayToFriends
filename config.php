@@ -1,22 +1,22 @@
 
 <?php
-
 /*
  * Define variables for DB-connect
  */
-define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', '');
-define('DB_DATABASE', 'wtf');
+$db_host = "localhost";
+$db_name = "wtf";
+$db_user = "root";
+$db_pass = "";
 
-$con = mysqli_connect('DB_SERVER','DB_USERNAME','DB_PASSWORD','DB_DATABASE') or die(mysqli_error());
 
-if (!$con) {
-    echo "Unable to connect to DB: " . mysqli_error();
-    exit;
+try{
+
+    $db_con = new PDO("mysql:host={$db_host};dbname={$db_name}",$db_user,$db_pass);
+    $db_con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+}
+catch(PDOException $e){
+    echo $e->getMessage();
 }
 
-if (!mysqli_select_db("DB_DATABASE")) {
-    echo "Unable to select wtf: " . mysqli_error();
-    exit;
-}
+
+?>

@@ -47,8 +47,8 @@ CREATE TABLE `contact` (
 
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
-  `email` varchar(100) COLLATE utf8_bin NOT NULL,
-  `password` varchar(200) COLLATE utf8_bin NOT NULL,
+  `user_email` varchar(100) COLLATE utf8_bin NOT NULL,
+  `user_password` varchar(200) COLLATE utf8_bin NOT NULL,
   `oauth` enum('Yes','No') COLLATE utf8_bin NOT NULL DEFAULT 'No',
   `status` enum('active','inactive') COLLATE utf8_bin NOT NULL DEFAULT 'inactive'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;

@@ -6,21 +6,40 @@
  * Time: 15:23
  */
 
-require_once 'config.php';
+	session_start();
+	require_once 'config.php';
 
-session_start();
-$uName = $_POST['name'];
-$pWord = md5($_POST['pwd']);
-$qry = "SELECT user_id, email, oauth FROM user WHERE email='".$uName."' AND password='".$pWord."' AND status='active'";
-$res = mysqli_query($qry);
-$num_row = mysql_num_rows($res);
-$row=mysqli_fetch_assoc($res);
-if( $num_row == 1 ) {
-    echo 'true';
-    $_SESSION['uName'] = $row['username'];
-    $_SESSION['oId'] = $row['orgid'];
-    $_SESSION['auth'] = $row['oauth'];
-}
-else {
-    echo 'false';
-}
+	if(isset($_POST['btn-login']))
+    {
+        //$user_name = $_POST['user_name'];
+        $user_email = trim($_POST['user_email']);
+        $user_password = trim($_POST['password']);
+
+        $password = md5($user_password);
+
+        try
+        {
+
+            $stmt = $db_con->prepare("SELECT * FROM user WHERE user_email=:email");
+            $stmt->execute(array(":email"=>$user_email));
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            $count = $stmt->rowCount();
+
+            if($row['user_password']==$password){
+
+                echo "ok"; // log in
+                $_SESSION['user_session'] = $row['id'];
+
+            }
+            else{
+
+                echo "email or password does not exist."; // wrong details
+            }
+
+        }
+        catch(PDOException $e){
+            echo $e->getMessage();
+        }
+    }
+
+?>

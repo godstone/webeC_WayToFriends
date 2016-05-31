@@ -2,31 +2,63 @@
  * Created by godstone on 31.05.16.
  */
 
-$(document).ready(function(){
-    $("#add_err").css('display', 'none', 'important');
-    $("#login").click(function(){
-        username=$("#name").val();
-        password=$("#word").val();
-        $.ajax({
-            type: "POST",
-            url: "login.php",
-            data: "name="+username+"&pwd="+password,
-            success: function(html){
-                if(html=='true')    {
-                    //$("#add_err").html("right username or password");
-                    window.location="home.php";
-                }
-                else    {
-                    $("#add_err").css('display', 'inline', 'important');
-                    $("#add_err").html("<img src='/images/alert.png' />Wrong username or password");
-                }
+$('document').ready(function()
+{
+    /* validation */
+    $("#login-form").validate({
+        rules:
+        {
+            password: {
+                required: true,
             },
-            beforeSend:function()
+            user_email: {
+                required: true,
+                email: true
+            },
+        },
+        messages:
+        {
+            password:{
+                required: "please enter your password"
+            },
+            user_email: "please enter your email address",
+        },
+        submitHandler: submitForm
+    });
+    /* validation */
+
+    /* login submit */
+    function submitForm()
+    {
+        var data = $("#login-form").serialize();
+
+        $.ajax({
+
+            type : 'POST',
+            url  : 'login.php',
+            data : data,
+            beforeSend: function()
             {
-                $("#add_err").css('display', 'inline', 'important');
-                $("#add_err").html("<img src='/images/ajax-loader.gif' /> Loading...")
+                $("#error").fadeOut();
+                $("#btn-login").html('<span class="glyphicon glyphicon-transfer"></span> &nbsp; sending ...');
+            },
+            success :  function(response)
+            {
+                if(response=="ok"){
+
+                    $("#btn-login").html('<img src="images/ajax-loader.gif" /> &nbsp; Signing In ...');
+                    setTimeout(' window.location.href = "home.php"; ',4000);
+                }
+                else{
+
+                    $("#error").fadeIn(1000, function(){
+                        $("#error").html('<div class="alert alert-danger"> <span class="glyphicon glyphicon-info-sign"></span> &nbsp; '+response+' !</div>');
+                        $("#btn-login").html('<span class="glyphicon glyphicon-log-in"></span> &nbsp; Sign In');
+                    });
+                }
             }
         });
         return false;
-    });
+    }
+    /* login submit */
 });

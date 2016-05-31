@@ -4,25 +4,50 @@
     <meta charset="utf-8">
     <title>PHP Login Form with Session</title>
     <link rel="stylesheet" href="css/style.css" type="text/css" />
+    <link href="libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="libs/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="js/login.js"></script>
+    <script type="text/javascript" src="js/validation.min.js"></script>
 </head>
 
 <body>
-<section id="loginform-in">
-<h1>User Login</h1>
-<div class="err" id="add_err"></div>
-<fieldset>
-    <form action="./" method="post">
-        <ul>
-            <li> <label for="name">E-Mail </label>
-                <input type="text" size="30"  name="name" id="name"  /></li>
-            <li> <label for="word">Password</label>
-                <input type="password" size="30"  name="word" id="word"  /></li>
-            <li> <label></label>
-                <input type="submit" id="login" name="login" value="Login" class="loginbutton" ></li>
-        </ul>
-    </form>
-</fieldset>
-</div>
+<section id="loginform">
+    <div class="signin-form">
+
+        <div class="container">
+
+
+            <form class="form-signin" method="post" id="login-form">
+
+                <h2 class="form-signin-heading">Log In to WebApp.</h2><hr />
+
+                <div id="error">
+                    <!-- error will be shown here ! -->
+                </div>
+
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="Email address" name="user_email" id="user_email" />
+                    <span id="check-e"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Password" name="password" id="password" />
+                </div>
+
+                <hr />
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-default" name="btn-login" id="btn-login">
+                        <span class="glyphicon glyphicon-log-in"></span> &nbsp; Sign In
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
 </section>
 </body>
 </html>
