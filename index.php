@@ -7,6 +7,7 @@
 </head>
 
 <body>
+<section id="loginform-in">
 <h1>User Login</h1>
 <div class="err" id="add_err"></div>
 <fieldset>
@@ -22,5 +23,6 @@
     </form>
 </fieldset>
 </div>
+</section>
 </body>
 </html>

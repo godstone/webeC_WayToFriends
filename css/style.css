@@ -1,8 +1,22 @@
+/* *********** MAIN *********** */
+
+body {
+
+}
+
+a {
+    outline: none;
+    text-decoration: none;
+}
+
+ul, li {
+    list-style-type: none;
+}
 
 
 /* *********** LOGIN CSS *********** */
 
-.loginform-in {
+#loginform-in {
     background: none repeat scroll 0 0 #FFFFFF;
     border: 1px solid #D6E5F5;
     border-radius: 3px 3px 3px 3px;
@@ -12,7 +26,7 @@
     width: 460px;
 }
 
-.loginform-in fieldset {
+#loginform-in fieldset {
     border-bottom: 1px solid #EFEFEF;
     margin: 20px auto;
     padding: 0 0 10px;
@@ -31,9 +45,10 @@
     height: 29px;
     letter-spacing: 1px;
     width: 92px;
+    margin: 150px 0 0 -20px;
 }
 
-.loginform-in fieldset label {
+#loginform-in fieldset label {
     color: #7D7D7D;
     float: left;
     font-family: "Helvetica Neue", SansSerif;
@@ -43,11 +58,11 @@
     width: 140px;
 }
 
-.loginform-in fieldset input[type="text"], input[type="password"], fieldset select {
+#loginform-in fieldset input[type="text"], input[type="password"], fieldset select {
     border: 1px solid #CBC7C5;
     border-radius: 3px 3px 3px 3px;
     float: left;
     height: 33px;
     padding: 1px 1px 1px 3px;
-    width: 250px;
+    width: 85%;
 }
