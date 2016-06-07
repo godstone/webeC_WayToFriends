@@ -7,8 +7,14 @@
 $(document).ready(function() {
 
     console.log( "ready!" );
-    showLogin();
+    //showLogin();
 
+
+    loginformContent();
+    show("loginform");
+    show("searchform");
+
+    show("map");
 
 });
 
