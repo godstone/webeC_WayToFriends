@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Erstellungszeit: 31. Mai 2016 um 16:05
+-- Erstellungszeit: 07. Jun 2016 um 15:30
 -- Server-Version: 10.1.10-MariaDB
 -- PHP-Version: 7.0.3
 
@@ -57,8 +57,8 @@ CREATE TABLE `user` (
 -- Daten für Tabelle `user`
 --
 
-INSERT INTO `user` (`id`, `email`, `password`, `oauth`, `status`) VALUES
-(1, 'tinten@fisch.com', 'asdf123!', 'No', 'inactive');
+INSERT INTO `user` (`id`, `user_email`, `user_password`, `oauth`, `status`) VALUES
+(1, 'tinten@fisch.com', 'a4b0607d0c1e2bcd40c36003024eed3a', 'No', 'inactive');
 
 --
 -- Indizes der exportierten Tabellen
@@ -76,7 +76,7 @@ ALTER TABLE `contact`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `email` (`email`);
+  ADD UNIQUE KEY `email` (`user_email`);
 
 --
 -- AUTO_INCREMENT für exportierte Tabellen

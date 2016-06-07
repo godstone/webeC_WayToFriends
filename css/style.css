@@ -58,3 +58,19 @@ ul, li {
 #btn-submit{
     height:45px;
 }
+
+#loginform {
+    display: none;
+}
+
+#searchform {
+    display: none;
+}
+
+#map {
+    display: none;
+}
+
+#contactlist {
+    display: none;
+}
