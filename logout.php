@@ -7,10 +7,11 @@
  */
 
 	session_start();
+session_destroy();
 	unset($_SESSION['user_session']);
 
 	if(session_destroy())
     {
-        header("Location: index.php");
+        header("Location: index.html");
     }
 ?>

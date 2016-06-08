@@ -28,6 +28,7 @@
             if($row['user_password']==$password){
 
                 echo "ok"; // log in
+                echo '<script type=\"text/javascript\">fehler();</script>';
                 $_SESSION['user_session'] = $row['id'];
 
             }
