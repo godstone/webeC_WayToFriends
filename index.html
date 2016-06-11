@@ -11,7 +11,8 @@
     <link href="libs/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
 
     <script language="javascript" type="text/javascript" src="js/app.js"></script>
-    <script language="javascript" type="text/javascript" src="js/login.js"></script>
+    <script language="javascript" type="text/javascript" src="js/nav.js"></script>
+    <!--<script language="javascript" type="text/javascript" src="js/login.js"></script>-->
     <script language="javascript" type="text/javascript" src="js/validation.min.js"></script>
     <script language="javascript" type="text/javascript" src="js/api_google.js"></script>
     <script language="javascript" type="text/javascript" src="js/api_telsearch.js"></script>
@@ -19,20 +20,60 @@
 </head>
 <body>
 
-<section id="loginform"></section>
-<section id="searchform">
-<div id="search">
-    <input type="text" id="searchKey" >
-    <button type="button" onclick="showAdresses($('#searchKey').val(),'#searchResult')">Search</button>
-</div>
-<div id="searchResult">
+    <header>Add Logo</header>
 
-</div>
-</section>
+    <main  class="wrapper">
 
-<section id="contactlist"></section>
-<section id="map">
-</section>
+        <section class="content">
+            <section id="login">
+                <form method="post">
+                    <h1>Login</h1>
+                    <input placeholder="E-Mail" id="email" />
+                    <input placeholder="Password" id="password" type="password"/>
+                    <p id="loginfail"></p>
+                    <input id="btnLogin" type="submit" value="Login" class="btn-white"/>
+                </form>
+                <button id="btnRegNew" class="btn-blue">Register new account</button>
+            </section>
+
+            <section id="register">
+                <form method="post">
+                    <h1>Register new Account</h1>
+                    <table>
+                        <tr>
+                            <td>E-Mail: </td><td><input id="regEmail"/></td>
+                        </tr>
+                        <tr>
+                            <td>Password: </td><td><input id="regPassword" type="password"/></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>    <p id="regfail"></p></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><input id="btnReg" type="submit" value="Register now"  class="btn-blue"/></td>
+                        </tr>
+                    </table>
+                </form>
+            </section>
+        </section>
+
+        <section class="content">
+            <section id="searchform">
+            <div id="search">
+                <input type="text" id="searchKey" >
+                <button id="btnSearch" class="btn-white" type="button" onclick="showAdresses($('#searchKey').val(),'#searchResult')">Search</button>
+            </div>
+            <div id="searchResult">
+
+            </div>
+            </section>
+
+            <section id="contactlist"></section>
+            <section id="map"></section>
+        </section>
+    </main>
 </body>
 </html>
 <script>

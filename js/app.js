@@ -7,15 +7,15 @@
 $(document).ready(function() {
 
     console.log( "ready!" );
-    //showLogin();
+    setView(LOGIN);
 
 
-    loginformContent();
+  /*  loginformContent();
     show("loginform");
     show("searchform");
 
     show("map");
-
+*/
 });
 
 
@@ -23,52 +23,11 @@ $(document).ready(function() {
 /*
  SHOW- & HIDE- FUNCTIONS
  */
-
-function show(screenSection){
-    var obj = document.getElementById(screenSection);
-
-    obj.style.display = "block";
-    console.log("Show: "+screenSection);
-};
-
-function hide(screenSection){
-    var obj = document.getElementById(screenSection);
-    if(obj.style.display == "block")
-        obj.style.display = "none";
-}
-
-function showLogin() {
-    loginformContent();
-    hide("searchform");
-    hide("map");
-    hide("contactlist");
-    show("loginform");
-}
-
-function showSearch() {
-    hide("loginform");
-    hide("map");
-    hide("contactlist");
-    show("searchform");
-}
-
-function showMap() {
-    hide("searchform");
-    hide("loginform");
-    hide("contactlist");
-    show("map");
-}
-
-function showContactlist() {
-    hide("searchform");
-    hide("map");
-    hide("loginform");
-    show("contactlist");
-}
+/*
 
 /*
  CONTENT OF SCREENS
- */
+ */ /*
 function loginformContent() {
 
     document.getElementById('loginform').innerHTML = '<fieldset>' +
@@ -103,4 +62,4 @@ function loginformContent() {
             '</div> </form></div></div>' +
     '</fieldset>';
 
-}
+}*/
