@@ -23,6 +23,7 @@ function showAdresses(searchKey, element){
             });*/
 
             for (i = 0; i < entries.length; i++) {
+                /*$(element).append("<div class='searchedContact'>");
                 $(element).append("<div>[favIcon]</div>");
 
                 $(element).append("<div>");
@@ -34,7 +35,19 @@ function showAdresses(searchKey, element){
                 $(element).append("city = "+getValueFromEntry(entries[i], "city")+"<br>");
                 $(element).append("phone = "+getValueFromEntry(entries[i], "phone")+"<br>");
                 $(element).append("id = "+getValueFromEntry(entries[i], "id")+"<br>");
-                $(element).append("</div>");
+                $(element).append("</div></div>");*/
+                var saveMyDiv = document.getElementById('searchResult').innerHTML;
+                document.getElementById('searchResult').innerHTML = saveMyDiv + '<fieldset>' +
+                    '<div class="searchedContact">' +
+                    '<div>[favIcon]</div>' +
+                    '<div><span class="contactName">' + getValueFromEntry(entries[i], "name") + '</span><br/>' +
+                    '<span class="contactFirstname">' + getValueFromEntry(entries[i], "firstname") + '</span><br/>' +
+                    '<span class="contactStreet">' + getValueFromEntry(entries[i], "street") + ' ' + getValueFromEntry(entries[i], "streetno") + '</span><br/>' +
+                    '<span class="contactZip">' + getValueFromEntry(entries[i], "zip") + ' ' + getValueFromEntry(entries[i], "city") + '</span><br/>' +
+                    '<span class="contactPhone">' + getValueFromEntry(entries[i], "phone") + '</span><br/>' +
+                    '<span class="contactId">' + getValueFromEntry(entries[i], "id") + '</span>'
+                '</fieldset>';
+
             }
 
 

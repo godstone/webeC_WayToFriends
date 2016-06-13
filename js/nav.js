@@ -38,7 +38,7 @@ $(document).ready(function() {
     /*
         VIEW-HANDLER
      */
-    setView = function(content){
+    setView = function(content1, content2, content3){
         //hide everything
         LOGIN.hide();
         REGISTER.hide();
@@ -47,9 +47,18 @@ $(document).ready(function() {
         SEARCHRESULT.hide();
 
         // Show give Content
-        content.show();
+        if (content2 === undefined && content3 === undefined){
+            content1.show();
+        } else if (content3 === undefined){
+            content1.show();
+            content2.show();
+        } else {
+            content1.show();
+            content2.show();
+            content3.show();
+        }
 
-        console.log("Hide everything and show: "+content);
+        //console.log("Hide everything and show: "+eval(content));
 
     };
 
@@ -194,6 +203,11 @@ $(document).ready(function() {
         });
     }
 
+    btnSearch.click(function(e){
+        e.preventDefault();
+        console.log('Pressed Search-Button')
+        setView(SEARCH, SEARCHRESULT);
+    });
 
 //end of document
 });

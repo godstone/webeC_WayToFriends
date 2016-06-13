@@ -2,7 +2,7 @@
 
 body, html, main {
     color: #252839;
-    background: #b5b5b7;
+    background: none;
     font-size: 16px;
 }
 
@@ -23,6 +23,9 @@ ul, li {
     list-style-type: none;
 }
 
+.wrapper {
+    padding: 0px;
+}
 
 /* *********** LOGIN CSS *********** */
 
@@ -72,6 +75,19 @@ ul, li {
 
 #searchform {
     display: none;
+    background: #677077 none repeat scroll 0 0;
+    padding: 0;
+    margin: 0;
+    height: 45px;
+    border-bottom: solid 1px #677077;
+}
+
+#searchKey {
+    width: calc(100% - 150px);
+    height: 45px;
+    border: 0;
+    border-bottom: inset 1px;
+    padding: 10px;
 }
 
 #map {
@@ -89,23 +105,50 @@ ul, li {
 
 button {
     background: #b5b5b7;
+    margin: 5px 0 5px 5px!important;
+    padding: 10px 20px;
     border: none;
     text-align: center;
     text-decoration: none;
     display: inline-block;
 }
 
-
+#btnSearch {
+    margin: 0 !important;
+    width: 135px;
+}
 
 #btn-submit{
     height:45px;
 }
 
 .btn-white {
-
 }
 
 .btn-blue {
     background: #252839;
     color: white;
 }
+
+/* ******** CONTACTS ******** */
+
+.searchedContact {
+    background: #252839;
+    color: #b5b5b7;
+    margin:10px 10px;
+    padding: 10px;
+}
+
+.contactId {
+    display: none;
+}
+
+.contactName {}
+
+.contactFirstname {}
+
+.contactZip {}
+
+.contactStreet {}
+
+.contactPhone {}
