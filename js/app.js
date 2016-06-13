@@ -8,8 +8,9 @@ function listContacts(){
         url  : '/contact',
         success :  function(response) {
             entries = JSON.parse(response);
+            document.getElementById('contactlist').innerHTML = "";
             for (i = 0; i < entries.length; i++) {
-                var saveMyDiv = document.getElementById('contactlist').innerHTML;
+
                 var route =  "'"+entries[i].street+"+"+entries[i].streetno+"+"+entries[i].zip+"+"+entries[i].city+"'";
                 
                 $('#contactlist').append('<fieldset onclick="showRoute('+route+')">' +
@@ -21,7 +22,7 @@ function listContacts(){
                     '<div class="distance">98800 km</div>'+
                 '</fieldset>');
             }
-
+            
             $("#contactlist").show();
         },
         error: function () {

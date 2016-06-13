@@ -89,10 +89,9 @@
                             data : JSON.stringify(JSON.parse(localStorage['results'])[id]),
                             success :  function(response)
                             {
-                                if(response=="ok"){
-                                }
-                                else{
-                                }
+                                $("#searchResult").hide();
+                                $("#contactlist").show();
+                                listContacts();
                             }
                         });
 
