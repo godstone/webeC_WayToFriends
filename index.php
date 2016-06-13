@@ -14,6 +14,7 @@ $app = new \Slim\Slim();
 $app->post('/user', 'getLogin');
 //$app->get('/dashboard', 'getDashboard');
 $app->post('/user/reg', 'regUser');
+$app->post('/contact', 'addContact');
 /*$app->post('/search', 'searchPerson');*/    // TODO: muss die Search hier aufgelistet sein? o0
 $app->get('/user', 'getLogout');
 $app->get('/user/session', 'getSession');
@@ -130,6 +131,13 @@ function regUser() {
 function searchPerson() {
         echo "<script type='text/javascript'>setView(SEARCH);</script>";
 
+
+}
+
+function addContact(){
+    $app = \Slim\Slim::getInstance();
+    $contact = json_decode($app->request()->getBody());
+    die($login->{'name'});
 
 }
 

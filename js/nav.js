@@ -16,7 +16,7 @@ var SEARCH;
 
 /* API URL Luca: http://localhost/webec/webeC_WayToFriends */
 
-var apiurl = 'http://localhost/webec/webeC_WayToFriends';
+var apiurl = '';
 
 $(document).ready(function() {
 

@@ -12,43 +12,29 @@ function showAdresses(searchKey, element){
         url: "http://tel.search.ch/api/?q="+searchKey+"&maxnum=2&key=02bd50c0d8083930ce53cd4cdafb01b0",
         dataType: "xml",
         success: function(xml) {
-            var entries = xml.getElementsByTagName("entry");
+            var entries = xmlToObject(xml.getElementsByTagName("entry"));
             //console.log(entries[0]);
             //console.log(entries[0].get);
             //console.log(entries[0].getElementsByTagNameNS(ns, "name")[0].innerHTML);
             console.log(entries);
-/*
-            entries.forEach(function(entry){
-                $(element).append("name = "+getValueFromEntry(entry, "name")+"<br>");
-            });*/
+
 
             // Clean before new search
             document.getElementById('searchResult').innerHTML ='';
+            localStorage['results'] = JSON.stringify(entries);
 
             for (i = 0; i < entries.length; i++) {
-                /*$(element).append("<div class='searchedContact'>");
-                $(element).append("<div>[favIcon]</div>");
-
-                $(element).append("<div>");
-                $(element).append("name = "+getValueFromEntry(entries[i], "name")+"<br>");
-                $(element).append("firstname = "+getValueFromEntry(entries[i], "firstname")+"<br>");
-                $(element).append("street = "+getValueFromEntry(entries[i], "street")+"<br>");
-                $(element).append("streetno = "+getValueFromEntry(entries[i], "streetno")+"<br>");
-                $(element).append("zip = "+getValueFromEntry(entries[i], "zip")+"<br>");
-                $(element).append("city = "+getValueFromEntry(entries[i], "city")+"<br>");
-                $(element).append("phone = "+getValueFromEntry(entries[i], "phone")+"<br>");
-                $(element).append("id = "+getValueFromEntry(entries[i], "id")+"<br>");
-                $(element).append("</div></div>");*/
                 var saveMyDiv = document.getElementById('searchResult').innerHTML;
+
                 document.getElementById('searchResult').innerHTML = saveMyDiv + '<fieldset>' +
                     '<div class="searchedContact">' +
-                    '<div class="star"><i class="fa fa-star-o" aria-hidden="false"></i></div>' +
-                    '<div class="contactContent"><span class="contactName">' + getValueFromEntry(entries[i], "name") + '</span> ' +
-                    '<span class="contactFirstname">' + getValueFromEntry(entries[i], "firstname") + '</span><br/>' +
-                    '<span class="contactStreet">' + getValueFromEntry(entries[i], "street") + ' ' + getValueFromEntry(entries[i], "streetno") + '</span>, ' +
-                    '<span class="contactZip">' + getValueFromEntry(entries[i], "zip") + ' ' + getValueFromEntry(entries[i], "city") + '</span><br/>' +
-                    '<span class="contactPhone">' + getValueFromEntry(entries[i], "phone") + '</span><br/>' +
-                    '<span class="contactId">' + getValueFromEntry(entries[i], "id") + '</span>'
+                    '<div class="star"><i class="fa fa-star-o" aria-hidden="false" onmouseover="over(this);" onmouseout="out(this);" onclick="star('+i+')"></i></div>' +
+                    '<div class="contactContent"><span class="contactName">' + entries[i].name + '</span> ' +
+                    '<span class="contactFirstname">' + entries[i].firstname + '</span><br/>' +
+                    '<span class="contactStreet">' + entries[i].street + ' ' + entries[i].streetno + '</span>, ' +
+                    '<span class="contactZip">' + entries[i].zip + ' ' + entries[i].city + '</span><br/>' +
+                    '<span class="contactPhone">' + entries.phone + '</span><br/>' +
+                    '<span class="contactId">' + entries[i].id + '</span>'
                 '</fieldset>';
 
             }
@@ -64,6 +50,25 @@ function showAdresses(searchKey, element){
         }else{
             return "";
         }
+    }
+
+    function xmlToObject(entries){
+        var objects = [];
+
+        for (i = 0; i < entries.length; i++) {
+            objects.push({
+                name:getValueFromEntry(entries[i], "name"),
+                firstname:getValueFromEntry(entries[i], "firstname"),
+                street:getValueFromEntry(entries[i], "street"),
+                streetno:getValueFromEntry(entries[i], "streetno"),
+                zip:getValueFromEntry(entries[i], "zip"),
+                city:getValueFromEntry(entries[i], "city"),
+                phone:getValueFromEntry(entries[i], "phone"),
+                telsearch_id:getValueFromEntry(entries[i], "telsearch_id")
+            });
+        }
+
+        return objects;
     }
 }
 

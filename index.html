@@ -64,18 +64,44 @@
 
         <section class="content">
             <section id="searchform">
-            <div id="search">
-                <input type="text" id="searchKey" placeholder="Suche eingeben">
-                <button id="btnSearch" class="btn-white" type="button" onclick="showAdresses($('#searchKey').val(),'#searchResult')">Search</button>
-            </div>
-            <div id="searchResult">
+                <div id="search">
+                    <input type="text" id="searchKey" placeholder="Suche eingeben">
+                    <button id="btnSearch" class="btn-white" type="button" onclick="showAdresses($('#searchKey').val(),'#searchResult')">Search</button>
+                </div>
+                <div id="searchResult">
 
-            </div>
+                </div>
+                <script>
+                    function over(element){
+                        element.className = "fa fa-star";
+                    }
+
+                    function out(element){
+                        element.className = "fa fa-star-o";
+                    }
+
+                    function star(id){
+                        console.log(JSON.stringify(JSON.parse(localStorage['results'])[id]));
+                        $.ajax({
+                            type : 'POST',
+                            url  : '/contact',
+                            contentType: 'application/json; charset=utf-8',
+                            dataType: "json",
+                            data : JSON.stringify(JSON.parse(localStorage['results'])[id]),
+                            success :  function(response)
+                            {
+                                if(response=="ok"){
+                                }
+                                else{
+                                }
+                            }
+                        });
+
+                    }
+                </script>
             </section>
-
             <section id="contactlist"></section>
             <section id="map"></section>
-
         </section>
     </main>
 </body>
@@ -83,14 +109,5 @@
 <script>
     //getDistance("street", "streetno", "zip", "city");
     //showRoute("street", "streetno", "zip", "city");
-
-    $("i").hover(
-            function() {
-                alert("huhu");
-            },
-            function() {
-                alert("fdfd");
-            }
-    );
 </script>
 
