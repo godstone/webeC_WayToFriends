@@ -25,11 +25,12 @@ function getDistance(street, streetno, zip, city){
 function calculateDistance(location){
     console.log("OK2");
 
-    url = 'http://maps.googleapis.com/maps/api/distancematrix/json';
+    url = 'https://maps.googleapis.com/maps/api/distancematrix/json';
     origin = 'origins='+location.coords.latitude+','+location.coords.longitude;
     destination = 'destinations=solothurnerstrasse+egerkingen';
+    key = 'key=AIzaSyDMAgJ7fqGx7M2-l2NT6jR-5277UH_fqQY';
 
-    map_url = url+"?"+origin+"&"+destination;
+    map_url = url+"?"+origin+"&"+destination+"&"+key;
     $.getJSON(map_url, function(json) {
 
         alert("jfdhfd");
