@@ -92,15 +92,14 @@ $(document).ready(function() {
             type: 'POST',
             //TODO: Adjust URL
             url: "http://localhost:8081/webeC/webeC_WayToFriends/user/reg",
-            contentType: 'application/json',
+            contentType: 'application/json; charset=utf-8',
             dataType: "json",
             data: loginToJSON(userR, pwR),
             success: function(response){
-                console.log('success!');
-                alert(response.success);
                 if (response.success) {
                     // true
                     console.log('Reg success');
+                    alert('User registrated');
                     setView(LOGIN);
                 }
                 else if (response.errmsg === 1) {
@@ -149,7 +148,7 @@ $(document).ready(function() {
             //TODO: Adjust URL
             //url: "http://"+document.domain+"/api/user",
             url: "http://localhost:8081/webeC/webeC_WayToFriends/user",
-            contentType: 'application/json',
+            contentType: 'application/json; charset=utf-8',
             dataType: "json",
             data: loginToJSON(user, pw),
             success: function(response){

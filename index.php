@@ -12,9 +12,9 @@ require 'config.php';
 
 $app = new \Slim\Slim();
 $app->post('/user', 'getLogin');
-$app->get('/dashboard', 'getDashboard');
+//$app->get('/dashboard', 'getDashboard');
 $app->post('/user/reg', 'regUser');
-$app->post('/search', 'searchPerson');
+//$app->post('/search', 'searchPerson');    // TODO: muss die Search hier aufgelistet sein? o0
 $app->get('/user', 'getLogout');
 $app->get('/user/session', 'getSession');
 
@@ -126,14 +126,6 @@ function regUser() {
     $connection->close();
 }
 
-function getDashboard() {
-    // Add function
-    echo("Add function getDashboard!");
-}
 
-function searchPerson() {
-    // Add function
-    echo("Add function searchPerson!");
-}
 
 $app->run();
