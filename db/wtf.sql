@@ -31,7 +31,7 @@ CREATE TABLE `contact` (
   `name` varchar(50) COLLATE utf8_bin NOT NULL,
   `firstname` varchar(50) COLLATE utf8_bin NOT NULL,
   `street` varchar(100) COLLATE utf8_bin NOT NULL,
-  `streetno` int(10) NOT NULL,
+  `streetno` varchar(10) NOT NULL,
   `zip` int(5) NOT NULL,
   `city` varchar(50) COLLATE utf8_bin NOT NULL,
   `phone` varchar(12) COLLATE utf8_bin NOT NULL,
@@ -48,17 +48,15 @@ CREATE TABLE `contact` (
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `user_email` varchar(100) COLLATE utf8_bin NOT NULL,
-  `user_password` varchar(200) COLLATE utf8_bin NOT NULL,
-  `oauth` enum('Yes','No') COLLATE utf8_bin NOT NULL DEFAULT 'No',
-  `status` enum('active','inactive') COLLATE utf8_bin NOT NULL DEFAULT 'inactive'
+  `user_password` varchar(200) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Daten für Tabelle `user`
 --
 
-INSERT INTO `user` (`id`, `user_email`, `user_password`, `oauth`, `status`) VALUES
-(1, 'tinten@fisch.com', 'a4b0607d0c1e2bcd40c36003024eed3a', 'No', 'inactive');
+INSERT INTO `user` (`id`, `user_email`, `user_password`) VALUES
+(1, 'tinten@fisch.com', 'a4b0607d0c1e2bcd40c36003024eed3a');
 
 --
 -- Indizes der exportierten Tabellen

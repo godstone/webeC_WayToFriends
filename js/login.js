@@ -37,11 +37,6 @@ $('document').ready(function()
             type : 'POST',
             url  : 'login.php',
             data : data,
-            beforeSend: function()
-            {
-                $("#error").fadeOut();
-                $("#btn-login").html('<span class="glyphicon glyphicon-transfer"></span> &nbsp; sending ...');
-            },
             success :  function(response)
             {
                 if(response=="ok"){
@@ -60,5 +55,4 @@ $('document').ready(function()
         });
         return false;
     }
-    /* login submit */
 });

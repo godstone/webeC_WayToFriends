@@ -32,12 +32,11 @@ function showAdresses(searchKey, element){
                     '<div class="contactContent"><span class="contactName">' + entries[i].name + '</span> ' +
                     '<span class="contactFirstname">' + entries[i].firstname + '</span><br/>' +
                     '<span class="contactStreet">' + entries[i].street + ' ' + entries[i].streetno + '</span>, ' +
-                    '<span class="contactZip">' + entries[i].zip + ' ' + entries[i].city + '</span><br/>' +
-                    '<span class="contactPhone">' + entries.phone + '</span><br/>' +
-                    '<span class="contactId">' + entries[i].id + '</span>'
+                    '<span class="contactZip">' + entries[i].zip + ' ' + entries[i].city + '</span><br/>'
                 '</fieldset>';
 
             }
+            showResults();
 
 
 
@@ -64,7 +63,7 @@ function showAdresses(searchKey, element){
                 zip:getValueFromEntry(entries[i], "zip"),
                 city:getValueFromEntry(entries[i], "city"),
                 phone:getValueFromEntry(entries[i], "phone"),
-                telsearch_id:getValueFromEntry(entries[i], "telsearch_id")
+                telsearch_id:getValueFromEntry(entries[i], "id")
             });
         }
 

@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
 <head>
+
     <meta charset="utf-8">
     <title>Way to Friends</title>
 
@@ -26,8 +27,7 @@
     <header>Way to Friends <button id="btnLogout" class="btn-blue">Logout</button></header>
 
     <main  class="wrapper">
-
-        <section class="content">
+        <section id="mainlogin">
             <section id="login">
                 <form method="post">
                     <h1>Login</h1>
@@ -38,7 +38,6 @@
                 </form>
                 <button id="btnRegNew" class="btn-blue">Register new account</button>
             </section>
-
             <section id="register">
                 <form method="post">
                     <h1>Register new Account</h1>
@@ -62,7 +61,7 @@
             </section>
         </section>
 
-        <section class="content">
+        <section id="app">
             <section id="searchform">
                 <div id="search">
                     <input type="text" id="searchKey" placeholder="Suche eingeben">
@@ -100,14 +99,16 @@
                     }
                 </script>
             </section>
-            <section id="contactlist"></section>
             <section id="map"></section>
+            <section id="contactlist">
+
+            </section>
+
         </section>
     </main>
 </body>
 </html>
 <script>
     //getDistance("street", "streetno", "zip", "city");
-    //showRoute("street", "streetno", "zip", "city");
 </script>
 

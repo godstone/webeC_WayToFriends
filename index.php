@@ -1,4 +1,6 @@
 <?php
+
+session_start();
 /**
  * REST API - WayToFriends
  *
@@ -13,14 +15,16 @@ require 'config.php';
 $app = new \Slim\Slim();
 $app->post('/user', 'getLogin');
 //$app->get('/dashboard', 'getDashboard');
-$app->post('/user/reg', 'regUser');
+$app->post('/user/add', 'addUser');
 $app->post('/contact', 'addContact');
+$app->get('/contact', 'getContacts');
 /*$app->post('/search', 'searchPerson');*/    // TODO: muss die Search hier aufgelistet sein? o0
 $app->get('/user', 'getLogout');
-$app->get('/user/session', 'getSession');
+//$app->get('/user/session', 'getSession');
 
 
 // Check if user has session and is allowed to use application
+/*
 function getSession() {
     session_start();
     echo session_status();
@@ -37,7 +41,7 @@ function getSession() {
         ));
     }
 }
-
+*/
 
 // Verify Login-Data with data from DB
 function getLogin() {
@@ -54,10 +58,11 @@ function getLogin() {
         $row = $result->fetch_row();
         $pwVerified = password_verify($password, $row[0]);
         if ($pwVerified) {
-            session_start();
+            //session_start();
             // Session variables
             $userid =  $row[1];
-            $_SESSION["uid"] = $userid;
+            $_SESSION['uid'] = $userid;
+            $_GLOBAL['user_id'] = $userid;
             header('Content-Type: application/json; charset=utf-8');
             echo json_encode(array('success' => true, 'pw' => $password, 'pwHash' => $row[0], 'pwVerified' => $pwVerified, 'userid' => $_SESSION["uid"],
             ));
@@ -77,19 +82,15 @@ function getLogin() {
     $connection->close();
 }
 
-
-// Logout user
 function getLogout() {
     $app = \Slim\Slim::getInstance();
-    session_start();
-    echo $_SESSION["uid"];
     session_unset();
     session_destroy();
     echo("Session destroyed");
 }
 
 // Register User to DB
-function regUser() {
+function addUser() {
     $app = \Slim\Slim::getInstance()->request();
     $login = json_decode($app->getBody());
     $username = $login->{'user'};
@@ -137,8 +138,54 @@ function searchPerson() {
 function addContact(){
     $app = \Slim\Slim::getInstance();
     $contact = json_decode($app->request()->getBody());
-    die($login->{'name'});
 
+    $connection = connectDB();
+    $stmt = $connection->prepare('INSERT INTO contact(name, firstname,street, streetno, zip, city, phone, user_id, telsearch_id) VALUES (?, ?, ?, ?, ?, ?, ? , ?, ?)');
+    $stmt->bind_param('ssssissis', $contact->{'name'}, $contact->{'firstname'}, $contact->{'street'},$contact->{'streetno'}, $contact->{'zip'}, $contact->{'city'}, $contact->{'phone'}, $_SESSION['uid'], $contact->{'telsearch_id'});
+    $connection->begin_Transaction();
+
+        $success = $stmt->execute();
+        if($success) {
+            $connection->commit();
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode(array('success' => true,));
+        }
+        else {
+            $connection->rollBack();
+            header('Content-Type: application/json; charset=utf-8');
+            echo json_encode(array('success' => false, 'errmsg' => 2,));
+        }
+
+    $connection->close();
+}
+
+function getContacts(){
+    $app = \Slim\Slim::getInstance();
+    $connection = connectDB();
+    $stmt = $connection->prepare('SELECT * FROM contact WHERE user_id=?');
+    $stmt->bind_param('i', $_SESSION['uid']);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    $contacts = [];
+
+    while ($row = $result->fetch_array(MYSQLI_NUM)){
+        $contact = new stdClass();
+        $contact->name = $row[1];
+        $contact->firstname = $row[2];
+        $contact->street = $row[3];
+        $contact->streetno = $row[4];
+        $contact->zip = $row[5];
+        $contact->city = $row[6];
+        $contact->phone = $row[7];
+
+        $contacts[] = $contact;
+    }
+
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode($contacts);
+
+    $connection->close();
 }
 
 $app->run();

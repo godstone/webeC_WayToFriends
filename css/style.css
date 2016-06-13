@@ -166,7 +166,6 @@ button {
 }
 
 .contactPhone {
-    display: none;
 }
 
 .contactContent {
@@ -181,6 +180,8 @@ button {
     margin-top: -15px;
 }
 
-.star:hover{
-
+.distance {
+    float: right;
+    font-size: larger;
+    margin-right: 30px;
 }
