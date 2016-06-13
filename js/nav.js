@@ -14,6 +14,10 @@ var LIST;
 var SEARCHRESULT;
 var SEARCH;
 
+/* API URL Luca: http://localhost/webec/webeC_WayToFriends */
+
+var apiurl = 'http://localhost/webec/webeC_WayToFriends';
+
 $(document).ready(function() {
 
     // Contents (section)
@@ -91,7 +95,7 @@ $(document).ready(function() {
         $.ajax({
             type: 'POST',
             //TODO: Adjust URL
-            url: "/user/reg",
+            url: apiurl+"/user/reg",
             contentType: 'application/json; charset=utf-8',
             dataType: "json",
             data: loginToJSON(userR, pwR),
@@ -147,7 +151,7 @@ $(document).ready(function() {
             type: 'POST',
             //TODO: Adjust URL
             //url: "http://"+document.domain+"/api/user",
-            url: "/user",
+            url: apiurl+"/user",
             contentType: 'application/json; charset=utf-8',
             dataType: "json",
             data: loginToJSON(user, pw),
@@ -180,10 +184,10 @@ $(document).ready(function() {
         //TODO: actual logout
         $.ajax({
             type: 'GET',
-            url: apiURL+'/user',
+            url: apiurl+'/user',
             success: function(response){
                 console.log('s'+response);
-                setView(LOGIN);
+                location.reload(true);
             },
             error: function () {
                 console.log('error logout');

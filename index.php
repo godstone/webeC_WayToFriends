@@ -14,7 +14,7 @@ $app = new \Slim\Slim();
 $app->post('/user', 'getLogin');
 //$app->get('/dashboard', 'getDashboard');
 $app->post('/user/reg', 'regUser');
-//$app->post('/search', 'searchPerson');    // TODO: muss die Search hier aufgelistet sein? o0
+/*$app->post('/search', 'searchPerson');*/    // TODO: muss die Search hier aufgelistet sein? o0
 $app->get('/user', 'getLogout');
 $app->get('/user/session', 'getSession');
 
@@ -84,6 +84,7 @@ function getLogout() {
     echo $_SESSION["uid"];
     session_unset();
     session_destroy();
+    echo("Session destroyed");
 }
 
 // Register User to DB
@@ -126,6 +127,10 @@ function regUser() {
     $connection->close();
 }
 
+function searchPerson() {
+        echo "<script type='text/javascript'>setView(SEARCH);</script>";
 
+
+}
 
 $app->run();

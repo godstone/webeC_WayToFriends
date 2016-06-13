@@ -22,6 +22,9 @@ function showAdresses(searchKey, element){
                 $(element).append("name = "+getValueFromEntry(entry, "name")+"<br>");
             });*/
 
+            // Clean before new search
+            document.getElementById('searchResult').innerHTML ='';
+
             for (i = 0; i < entries.length; i++) {
                 /*$(element).append("<div class='searchedContact'>");
                 $(element).append("<div>[favIcon]</div>");
