@@ -1,7 +1,17 @@
 /* *********** MAIN *********** */
 
-body {
+body, html, main {
+    color: #252839;
+    background: #b5b5b7;
+    font-size: 16px;
+}
 
+header {
+    background: #252839;
+    font-family:'Exo', sans-serif;
+    color: #f2b632;
+    text-align: center;
+    font-size: 1.5em;
 }
 
 a {
@@ -20,7 +30,6 @@ ul, li {
     max-width: 500px;
     padding: 19px 29px 29px;
     margin: 0 auto;
-//margin-top:90px;
     background-color: #fff;
 
     border: 1px solid #e5e5e5;
@@ -77,14 +86,26 @@ ul, li {
 
 
 /* ******** BUTTONS ******** */
+
+button {
+    background: #b5b5b7;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+
+
 #btn-submit{
     height:45px;
 }
 
 .btn-white {
-    background: #fff;
+
 }
 
 .btn-blue {
-    background: dodgerblue;
+    background: #252839;
+    color: white;
 }

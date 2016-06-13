@@ -58,7 +58,7 @@ function getLogin() {
             $userid =  $row[1];
             $_SESSION["uid"] = $userid;
             header('Content-Type: application/json; charset=utf-8');
-            echo json_encode(array('success' => true, 'pw' => $password, 'pwHash' => $row[0], 'pwVerified' => $pwVerified, 'userid' => $_SESSION["userid"],
+            echo json_encode(array('success' => true, 'pw' => $password, 'pwHash' => $row[0], 'pwVerified' => $pwVerified, 'userid' => $_SESSION["uid"],
             ));
 
         }

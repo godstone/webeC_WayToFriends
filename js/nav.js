@@ -61,7 +61,7 @@ $(document).ready(function() {
     // Register a new account Button
     btnRegNew.click(function(e){
         e.preventDefault();
-        setView(SEARCH);
+        setView(REGISTER);
     });
 
     // Register the account Button
@@ -148,7 +148,7 @@ $(document).ready(function() {
                     // true
                     console.log('login success');
                     btnLogout.show();
-                    setView(DASHBOARD);
+                    setView(SEARCH);
                 } else {
                     console.log('bad login');
                     // false
@@ -175,6 +175,7 @@ $(document).ready(function() {
             url: apiURL+'/user',
             success: function(response){
                 console.log('s'+response);
+                setView(LOGIN);
             },
             error: function () {
                 console.log('error logout');
