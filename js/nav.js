@@ -32,7 +32,7 @@ $(document).ready(function() {
     var btnStar = $("#btnStar");
 
     btnLogout.hide();
-    setView(LOGIN);
+
 
 
     /*
@@ -51,7 +51,7 @@ $(document).ready(function() {
 
         console.log("Hide everything and show: "+content);
 
-    }
+    };
 
 
     /*
