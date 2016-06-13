@@ -39,8 +39,8 @@ function showAdresses(searchKey, element){
                 var saveMyDiv = document.getElementById('searchResult').innerHTML;
                 document.getElementById('searchResult').innerHTML = saveMyDiv + '<fieldset>' +
                     '<div class="searchedContact">' +
-                    '<div>[favIcon]</div>' +
-                    '<div><span class="contactName">' + getValueFromEntry(entries[i], "name") + '</span><br/>' +
+                    '<div class="star"><i class="fa fa-star" aria-hidden="false"></i></div>' +
+                    '<div class="contactContent"><span class="contactName">' + getValueFromEntry(entries[i], "name") + '</span><br/>' +
                     '<span class="contactFirstname">' + getValueFromEntry(entries[i], "firstname") + '</span><br/>' +
                     '<span class="contactStreet">' + getValueFromEntry(entries[i], "street") + ' ' + getValueFromEntry(entries[i], "streetno") + '</span><br/>' +
                     '<span class="contactZip">' + getValueFromEntry(entries[i], "zip") + ' ' + getValueFromEntry(entries[i], "city") + '</span><br/>' +
