@@ -147,7 +147,7 @@ $(document).ready(function() {
             type: 'POST',
             //TODO: Adjust URL
             //url: "http://"+document.domain+"/api/user",
-            url: "http://localhost:8081/webeC/webeC_WayToFriends/user",
+            url: "/user",
             contentType: 'application/json; charset=utf-8',
             dataType: "json",
             data: loginToJSON(user, pw),
