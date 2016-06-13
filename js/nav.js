@@ -91,7 +91,7 @@ $(document).ready(function() {
         $.ajax({
             type: 'POST',
             //TODO: Adjust URL
-            url: "http://localhost:8081/webeC/webeC_WayToFriends/user/reg",
+            url: "/user/reg",
             contentType: 'application/json; charset=utf-8',
             dataType: "json",
             data: loginToJSON(userR, pwR),
