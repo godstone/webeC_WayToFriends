@@ -60,11 +60,11 @@ function callback(vari){
 function showRoute(place) {
 
     url = "//maps.google.de/maps?hl=de";
-    origin = "saddr=olten";
+    origin = "saddr=olten"; //ToDo: Statt Olten eigene Location
     destination = "daddr="+place;
 
     src = url + "&" + origin + "&" + destination + "&output=embed";
-    src = url + "&" + destination + "&output=embed";
+   // src = url + "&" + destination + "&output=embed";
 
     document.getElementById("map").innerHTML= '<iframe width="' + $(document).width() + '"height="400" src=' + src + ' frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>';
     showMap();
