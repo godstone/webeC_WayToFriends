@@ -32,7 +32,8 @@ function showAdresses(searchKey, element){
                     '<div class="contactContent"><span class="contactName">' + entries[i].name + '</span> ' +
                     '<span class="contactFirstname">' + entries[i].firstname + '</span><br/>' +
                     '<span class="contactStreet">' + entries[i].street + ' ' + entries[i].streetno + '</span>, ' +
-                    '<span class="contactZip">' + entries[i].zip + ' ' + entries[i].city + '</span><br/>'
+                    '<span class="contactZip">' + entries[i].zip + ' ' + entries[i].city + '</span><br/>' +
+                    '<span class="contactPhone">' + entries[i].phone + '</span>'
                 '</fieldset>';
 
             }

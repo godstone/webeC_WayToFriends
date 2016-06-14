@@ -33,6 +33,12 @@ $(document).ready(function() {
         e.preventDefault();
         console.log('Pressed Search-Button');
     });
+
+    $("#searchKey").keydown(function(e){
+        if(e.keyCode == 13){
+            document.getElementById("btnSearch").click();
+        }
+    });
 });
 
 function showApp(){
