@@ -3,6 +3,7 @@
  */
 
 $(document).ready(function() {
+    showLogin();
     navigator.geolocation.getCurrentPosition(calculateDistance);
     $("#register").hide();
 

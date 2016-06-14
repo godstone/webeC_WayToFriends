@@ -38,7 +38,7 @@ function logout(){
         url: apiurl+'/user',
         success: function(response){
             console.log('s'+response);
-            showLogin();
+            location.reload();
         },
         error: function () {
             console.log('error logout');
@@ -111,7 +111,7 @@ function register(){
                 // true
                 console.log('Reg success');
                 alert('User registrated');
-                $("#login").show();
+                location.reload();
             }
             else if (response.errmsg === 1) {
                 // false

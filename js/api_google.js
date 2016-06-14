@@ -78,14 +78,18 @@ function callback(vari){
 
 }
 
-function showRoute(place) {
+var place = "";
+function showRoute(p){
+    place = p;
+    navigator.geolocation.getCurrentPosition(showRoute2);
+}
 
+function showRoute2(location) {
     url = "//maps.google.de/maps?hl=de";
-    origin = "saddr=olten"; //ToDo: Statt Olten eigene Location
+    origin = "saddr="+location.coords.latitude+","+location.coords.longitude; //ToDo: Statt Olten eigene Location
     destination = "daddr="+place;
 
     src = url + "&" + origin + "&" + destination + "&output=embed";
-   // src = url + "&" + destination + "&output=embed";
 
     document.getElementById("map").innerHTML= '<iframe width="' + $(document).width() + '"height="400" src=' + src + ' frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>';
     showMap();
