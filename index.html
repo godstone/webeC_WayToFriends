@@ -83,7 +83,7 @@
                         console.log(JSON.stringify(JSON.parse(localStorage['results'])[id]));
                         $.ajax({
                             type : 'POST',
-                            url  : '/contact',
+                            url  : apiurl+'/contact',
                             contentType: 'application/json; charset=utf-8',
                             dataType: "json",
                             data : JSON.stringify(JSON.parse(localStorage['results'])[id]),

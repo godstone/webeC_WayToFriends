@@ -1,11 +1,11 @@
 /* API URL Luca: http://localhost/webec/webeC_WayToFriends */
 
-var apiurl = '';
+var apiurl = 'http://localhost/webec/webeC_WayToFriends';
 
 function listContacts(){
     $.ajax({
         type : 'GET',
-        url  : '/contact',
+        url  : apiurl+'/contact',
         success :  function(response) {
             entries = JSON.parse(response);
             document.getElementById('contactlist').innerHTML = "";
@@ -22,7 +22,7 @@ function listContacts(){
                     '<div class="distance">98800 km</div>'+
                 '</fieldset>');
             }
-            
+
             $("#contactlist").show();
         },
         error: function () {
