@@ -1,7 +1,6 @@
 <!doctype html>
 <html>
 <head>
-
     <meta charset="utf-8">
     <title>Way to Friends</title>
 
@@ -16,14 +15,14 @@
 
     <script language="javascript" type="text/javascript" src="js/validation.min.js"></script>
     <script language="javascript" type="text/javascript" src="js/api_google.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js"
+            ></script>
     <script language="javascript" type="text/javascript" src="js/api_telsearch.js"></script>
     <script language="javascript" type="text/javascript" src="js/nav.js"></script>
     <script language="javascript" type="text/javascript" src="js/app.js"></script>
     <script language="javascript" type="text/javascript" src="https://use.fontawesome.com/f3c82586f5.js"></script>
-
 </head>
 <body>
-
     <header>Way to Friends <button id="btnLogout" class="btn-blue">Logout</button></header>
 
     <main  class="wrapper">
@@ -70,44 +69,11 @@
                 <div id="searchResult">
 
                 </div>
-                <script>
-                    function over(element){
-                        element.className = "fa fa-star";
-                    }
-
-                    function out(element){
-                        element.className = "fa fa-star-o";
-                    }
-
-                    function star(id){
-                        console.log(JSON.stringify(JSON.parse(localStorage['results'])[id]));
-                        $.ajax({
-                            type : 'POST',
-                            url  : apiurl+'/contact',
-                            contentType: 'application/json; charset=utf-8',
-                            dataType: "json",
-                            data : JSON.stringify(JSON.parse(localStorage['results'])[id]),
-                            success :  function(response)
-                            {
-                                $("#searchResult").hide();
-                                $("#contactlist").show();
-                                listContacts();
-                            }
-                        });
-
-                    }
-                </script>
             </section>
             <section id="map"></section>
-            <section id="contactlist">
-
-            </section>
-
+            <section id="contactlist"></section>
         </section>
     </main>
 </body>
 </html>
-<script>
-    //getDistance("street", "streetno", "zip", "city");
-</script>
 

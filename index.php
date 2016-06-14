@@ -14,34 +14,18 @@ require 'config.php';
 
 $app = new \Slim\Slim();
 $app->post('/user', 'getLogin');
-//$app->get('/dashboard', 'getDashboard');
 $app->post('/user/add', 'addUser');
 $app->post('/contact', 'addContact');
 $app->get('/contact', 'getContacts');
-/*$app->post('/search', 'searchPerson');*/    // TODO: muss die Search hier aufgelistet sein? o0
 $app->get('/user', 'getLogout');
-//$app->get('/user/session', 'getSession');
+$app->get('/user/session', 'getUserId');
 
 
 // Check if user has session and is allowed to use application
-/*
-function getSession() {
-    session_start();
-    echo session_status();
-    $user_id = $_SESSION['uid'];
+function getUserId() {
     echo $_SESSION['uid'];
-    if(isset($_SESSION['uid'])) {
-        header('Content-Type: application/json; charset=utf-8');
-        echo json_encode(array('success' => true, 'id' => $_SESSION['uid'],
-        ));
-    }
-    else {
-        header('Content-Type: application/json; charset=utf-8');
-        echo json_encode(array('success' => false,
-        ));
-    }
 }
-*/
+
 
 // Verify Login-Data with data from DB
 function getLogin() {
@@ -171,6 +155,7 @@ function getContacts(){
 
     while ($row = $result->fetch_array(MYSQLI_NUM)){
         $contact = new stdClass();
+        $contact->id = $row[0];
         $contact->name = $row[1];
         $contact->firstname = $row[2];
         $contact->street = $row[3];

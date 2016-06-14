@@ -4,7 +4,6 @@
 
 $(document).ready(function() {
     showLogin();
-    navigator.geolocation.getCurrentPosition(calculateDistance);
     $("#register").hide();
 
     // Register a new account Button
@@ -53,9 +52,9 @@ function showApp(){
 }
 
 function showLogin(){
-    $("#mainlogin").show();
-    $("#app").hide();
-    $("#btnLogout").hide();
+    checkLoginStatus();
+    
+
 }
 
 function showRegister(){
@@ -71,5 +70,14 @@ function showMap(){
 function showResults(){
     $("#map").hide();
     $("#searchResult").show();
+}
+
+
+function over(element){
+    element.className = "fa fa-star";
+}
+
+function out(element){
+    element.className = "fa fa-star-o";
 }
 

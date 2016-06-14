@@ -20,8 +20,10 @@ function listContacts(){
                     '<span class="contactStreet">' + entries[i].street + ' ' + entries[i].streetno + '</span>, ' +
                     '<span class="contactZip">' + entries[i].zip + ' ' + entries[i].city + '</span><br/>' +
                     '<span class="contactPhone">' + entries[i].phone + '</span>'+
-                    '<div class="distance">98800 km</div>'+
+                    '<div class="distance" id="distance_'+entries[i].id+'"></div>'+
                 '</fieldset>');
+
+                showDistance(route, entries[i].id);
             }
 
             $("#contactlist").show();
@@ -42,6 +44,27 @@ function logout(){
         },
         error: function () {
             console.log('error logout');
+        },
+    });
+}
+
+function checkLoginStatus(){
+    $.ajax({
+        type: 'GET',
+        url: apiurl+'/user/session',
+        success: function(response){
+            if(response=""){
+                $("#mainlogin").show();
+                $("#app").hide();
+                $("#btnLogout").hide();
+            }else{
+                showApp();
+            }
+        },
+        error: function () {
+            $("#mainlogin").show();
+            $("#app").hide();
+            $("#btnLogout").hide();
         },
     });
 }
@@ -138,6 +161,24 @@ function register(){
             $("#register").show();
         },
     });
+}
+
+function star(id){
+    console.log(JSON.stringify(JSON.parse(localStorage['results'])[id]));
+    $.ajax({
+        type : 'POST',
+        url  : apiurl+'/contact',
+        contentType: 'application/json; charset=utf-8',
+        dataType: "json",
+        data : JSON.stringify(JSON.parse(localStorage['results'])[id]),
+        success :  function(response)
+        {
+            $("#searchResult").hide();
+            $("#contactlist").show();
+            listContacts();
+        }
+    });
+
 }
 
 //Create JSON with login data
