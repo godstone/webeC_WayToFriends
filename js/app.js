@@ -1,6 +1,7 @@
 /* API URL Luca: http://localhost/webec/webeC_WayToFriends */
+/* API URL Simon: http://localhost:8081/webeC/webeC_WayToFriends */
 
-var apiurl = 'http://localhost/webec/webeC_WayToFriends';
+var apiurl = '';
 
 function listContacts(){
     $.ajax({

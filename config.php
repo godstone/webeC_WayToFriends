@@ -6,10 +6,6 @@
 
 function connectDB()
 {
-    /*$db_host = "localhost";
-    $db_name = "wtf";
-    $db_user = "root";
-    $db_pass = "";*/
 
     $db_host = "godstone.ch";
     $db_name = "godstone_wtf";

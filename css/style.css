@@ -80,8 +80,14 @@ ul, li {
     background: #b5b5b7 none repeat scroll 0 0;
     padding: 0;
     margin: 0;
-    height: 45px;
+    height: auto;
     border-bottom: solid 0px #677077;
+    z-index: 10;
+    position: relative;
+}
+
+#searchResult {
+    position: relative;
 }
 
 #searchKey {
@@ -166,6 +172,7 @@ button {
 }
 
 .contactPhone {
+    font-size: 0.8em;
 }
 
 .contactContent {
@@ -184,4 +191,16 @@ button {
     float: right;
     font-size: larger;
     margin-right: 30px;
+    margin-top: -45px;
+    position: relative;
+}
+
+#contactlist > fieldset {
+    background: #f2b632;
+    color: #252839;
+    margin:10px 10px;
+    padding: 10px;
+    height:65px;
+
+
 }
