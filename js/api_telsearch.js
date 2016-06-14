@@ -13,9 +13,7 @@ function showAdresses(searchKey, element){
         dataType: "xml",
         success: function(xml) {
             var entries = xmlToObject(xml.getElementsByTagName("entry"));
-            //console.log(entries[0]);
-            //console.log(entries[0].get);
-            //console.log(entries[0].getElementsByTagNameNS(ns, "name")[0].innerHTML);
+
             console.log(entries);
 
 
