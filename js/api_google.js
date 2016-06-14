@@ -23,21 +23,42 @@ function getDistance(street, streetno, zip, city){
 }
 
 function calculateDistance(location){
-    console.log("OK2");
+    console.log(location);
 
-    url = 'https://maps.googleapis.com/maps/api/distancematrix/json';
-    origin = 'origins='+location.coords.latitude+','+location.coords.longitude;
-    destination = 'destinations=solothurnerstrasse+egerkingen';
-    //key = 'key=AIzaSyDMAgJ7fqGx7M2-l2NT6jR-5277UH_fqQY';
+   // url = 'http://maps.googleapis.com/maps/api/distancematrix/json';
+    //origin = 'origins='+location.coords.latitude+','+location.coords.longitude;
+    //destination = 'destinations=solothurnerstrasse+egerkingen';
+  //  key = 'key=AIzaSyDMAgJ7fqGx7M2-l2NT6jR-5277UH_fqQY';
+
+
+    var distanceService = new google.maps.DistanceMatrixService();
+    var origin = new google.maps.LatLng(location.coords.latitude, location.coords.longitude);
+    distanceService.getDistanceMatrix({
+            origins: [origin],
+            destinations: ['solothurnerstrasse, egerkingen'],
+            travelMode: google.maps.TravelMode.DRIVING,
+            unitSystem: google.maps.UnitSystem.METRIC,
+            durationInTraffic: true,
+            avoidHighways: false,
+            avoidTolls: false
+        },
+        function (response, status) {
+            if (status !== google.maps.DistanceMatrixStatus.OK) {
+                console.log('Error:', status);
+            } else {
+                console.log(response);
+            }
+        });
+
 
     //map_url = url+"?"+origin+"&"+destination+"&"+key;
-    map_url = url+"?"+origin+"&"+destination;
+    //map_url = url+"?"+origin+"&"+destination;
 
-    $.getJSON(map_url+"?callback=?", function(result){
+    /*
+    $.get(map_url, function(result){
         //response data are now in the result variable
         console.log(result);
     });
-/*
     $.ajax({
         url: map_url,
         dataType: "jsonp",
